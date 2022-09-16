@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import { publicRequest } from "../requestMethods";
+import { publicRequest, userRequest } from "../requestMethods";
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/cartRedux";
@@ -135,13 +135,18 @@ const Product = (props) => {
   const [data, setData] = useState([]);
   const user = useSelector((state) => state.user.currentUser);
   const token = useSelector((state) => state.user.currentUser.accessToken);
+  console.log(token);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await publicRequest.get("/products/find/" + id);
+        const res = await publicRequest.get("/products/find/" + id,{
+          headers:{
+            token:`Bearer ${token}`
+          }
+        });
         setProduct(res.data);
         // console.log(res.data);
       } catch {}

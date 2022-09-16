@@ -20,14 +20,14 @@ const TOKEN =
 // Access-Control-Allow-Origin
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
-  header: { "Access-Control-Allow-Origin": "origin-list" },
+  headers: { "Access-Control-Allow-Origin": "origin-list" },
 });
 export const publicRequestUser = axios.create({
   baseURL: BASE_URL_USER,
-  header: { "Access-Control-Allow-Origin": "origin-list" },
+  headers: { "Access-Control-Allow-Origin": "origin-list" },
 });
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  header: { "Access-Control-Allow-Origin": "origin-list", token: `Bearer ${TOKEN}` },
+  headers: { "Access-Control-Allow-Origin": "origin-list", token: `Bearer ${TOKEN}` },
 });
