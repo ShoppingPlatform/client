@@ -99,7 +99,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>Mindfulness Portal</Logo>
+        <Logo>Shopping Platform</Logo>
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
@@ -144,7 +144,7 @@ const Footer = () => {
           <Phone style={{marginRight:"10px"}}/> +94758657450
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{marginRight:"10px"}} /> yohannayanajith40@gmail
+          <MailOutline style={{marginRight:"10px"}} /> yohannayanajith40@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>

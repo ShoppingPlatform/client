@@ -1,21 +1,21 @@
 export const sliderItems = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/midefulness/image/upload/v1657441685/samples/people/kitchen-bar.jpg",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663365563/middleware/beautiful-smiling-young-blonde-woman-pointing-sunglasses-holding-shopping-bags-credit-card-pink-wall_catk0d.jpg",
     title: "FAMOUS BOOKS",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/midefulness/image/upload/v1657441691/samples/people/bicycle.jpg",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663365552/middleware/two-happy-girls-sweaters-having-fun-with-shopping-trolley-megaphone-white-wall_jvzsnj.jpg",
     title: "OLD COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://res.cloudinary.com/midefulness/image/upload/v1657441689/samples/people/jazz.jpg",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663365573/middleware/happy-man-with-handbags-dancing-after-shopping-spree_lhcs72.jpg",
     title: "BOOK LOVE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fbf0f4",
@@ -52,7 +52,7 @@ export const categoriesOLD = [
 export const categories = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/midefulness/image/upload/v1660741230/Travello/image1_zb9wji.jpg",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663366991/middleware/creative-composition-world-book-day_mhds26.jpg",
     title: "BOOKS!",
     cat: "books",
   },
@@ -64,19 +64,19 @@ export const categories = [
   // },
   {
     id: 3,
-    img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663367095/middleware/rm330-pangrum-cdcover-01-ps_manqib.jpg",
     title: "CDS/DVD",
     cat: "dvd",
   },
   {
     id: 4,
-    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663367149/middleware/essential-oil-lime-oil_buzsmn.jpg",
     title: "ESSENTIAL OILS",
     cat: "essentialOils",
   },
   {
     id: 5,
-    img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    img: "https://res.cloudinary.com/midefulness/image/upload/v1663368058/middleware/a02_jzrdzp.jpg",
     title: "INCENSE STICKS",
     cat: "incenseSticks",
   },
