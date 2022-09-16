@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
 
-const BASE_URL = "http://localhost:5004/api/v1/";
-const BASE_URL_USER = "http://localhost:5005/api/v1/";
+// const BASE_URL = "http://localhost:5004/api/v1/";
+const BASE_URL = "https://apibuy.herokuapp.com/api/v1/";
+const BASE_URL_USER = "https://apiuserbuyer.herokuapp.com/api/v1/";
 const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2JlMjE5NzQ3YTI4NWM0ZTJmMzFiYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Nzc0NDY5OCwiZXhwIjoxNjU4MDAzODk4fQ.7daxD3CSubuHEJPl-IMtp_lguXimAIULd46BbJ-I8PQ";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
