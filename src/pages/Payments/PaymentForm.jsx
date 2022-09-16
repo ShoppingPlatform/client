@@ -21,6 +21,7 @@ const PaymentForm = () => {
   const elements = useElements();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser._id);
+  const token = useSelector((state) => state.user.currentUser.accessToken);
   const [date, setDate] = useState("");
   const [clientSecretPay, setClientSecretPay] = useState("");
   const [allShow, setAllShow] = useState(false);
@@ -45,14 +46,16 @@ const PaymentForm = () => {
 
       // ... SEND to your API server to process payment intent
       const response = await fetch(
-        "http://localhost:5000/api/v1/checkout/create-payment-intent",
+        "https://apipaymentbuyer.herokuapp.com/api/v1/checkout/create-payment-intent",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            token: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "origin-list",
           },
           body: JSON.stringify({
-            amount: cart.total*100,
+            amount: cart.total * 100,
             currency: "usd",
           }),
         }
@@ -78,11 +81,12 @@ const PaymentForm = () => {
       today.getDate();
     setDate(dateNew);
     try {
-      let response = await fetch(`http://localhost:5000/api/v1/checkout`, {
+      let response = await fetch(`https://apipaymentbuyer.herokuapp.com/api/v1/checkout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // token: token,
+          token: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": "origin-list",
         },
         body: JSON.stringify({
           clientSecret: clientSecret,
@@ -104,11 +108,12 @@ const PaymentForm = () => {
   const createOrderDetails = async () => {
     cart.products.map(async (item) => {
       try {
-        let response = await fetch(`http://localhost:5000/api/v1/orders`, {
+        let response = await fetch(`https://apideliverybuyer.herokuapp.com/api/v1/orders`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // token: token,
+            token:`Bearer ${token}`,
+            "Access-Control-Allow-Origin": "origin-list"
           },
           body: JSON.stringify({
             userId: user,
@@ -117,7 +122,7 @@ const PaymentForm = () => {
             title: item.title,
             desc: item.desc,
             img: item.img,
-            price: item.price*item.quantity,
+            price: item.price * item.quantity,
             isPay: true,
           }),
         });

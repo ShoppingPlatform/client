@@ -20,7 +20,8 @@ export default function OrderHistoryTest() {
   const currentDate = moment();
 
   const user = useSelector((state) => state.user.currentUser._id);
-  const URL = `http://localhost:5000/api/v1/orders/find/${user}`;
+  const token = useSelector((state) => state.user.currentUser.accessToken);
+  const URL = `https://apideliverybuyer.herokuapp.com/api/v1/orders/find/${user}`;
 
   // IP address of local machine - 192.168.8.187
   useEffect(() => {
@@ -33,7 +34,8 @@ export default function OrderHistoryTest() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // token: token,
+            token: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "origin-list",
           },
         });
         let json = await response.json();
@@ -77,7 +79,7 @@ export default function OrderHistoryTest() {
 
   // const URL = `http://localhost:5000/api/v1/carts/${cartId}`;
 
-  const URl_Update = `http://localhost:5000/api/v1/orders/${cartId}`;
+  const URl_Update = `https://apideliverybuyer.herokuapp.com/api/v1/orders/${cartId}`;
 
   const updateConfirm = async () => {
     // console.log("Update");
@@ -86,7 +88,8 @@ export default function OrderHistoryTest() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // token: token,
+          token: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": "origin-list",
         },
         body: JSON.stringify({
           isCancel: true,
@@ -192,7 +195,8 @@ export default function OrderHistoryTest() {
             {/* {moment(params.row.createdAt).format("L") + 2} */}
             {/* {moment(moment(params.row.createdAt).diff(currentDate)).format("HH:mm:ss") <= "24:00:00" ? ( */}
             {/* {moment(params.row.createdAt).fromNow() <= moment().format("L") ? ( */}
-            {moment.duration(currentDate.diff(params.row.createdAt)).asDays() <= 2 ? (
+            {moment.duration(currentDate.diff(params.row.createdAt)).asDays() <=
+            2 ? (
               !params.row.isCancel ? (
                 <button
                   className="userListEdit"

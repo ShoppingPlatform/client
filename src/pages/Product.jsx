@@ -134,6 +134,7 @@ const Product = (props) => {
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const user = useSelector((state) => state.user.currentUser);
+  const token = useSelector((state) => state.user.currentUser.accessToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -158,7 +159,7 @@ const Product = (props) => {
 
   const handleClick = () => {
     if (!size || !color) {
-    // if (!color) {
+      // if (!color) {
       // alert("Please select color & size!");
       setAllFailShow(true);
     } else if (!user) {
@@ -177,11 +178,12 @@ const Product = (props) => {
 
   const saveCartDetails = async () => {
     try {
-      let response = await fetch("http://localhost:5001/api/v1/carts", {
+      let response = await fetch("https://apiproductbuy.herokuapp.com/api/v1/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // token: token,
+          token: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": "origin-list",
         },
         body: JSON.stringify({
           userId: user._id,

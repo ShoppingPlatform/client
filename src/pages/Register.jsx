@@ -57,7 +57,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const URL = "http://localhost:5000/api/v1/auth/register";
+const URL = "https://apiuserbuyer.herokuapp.com/api/v1/auth/register";
 
 const Register = () => {
   const [formSaveData, setFormSaveData] = useState([]);
@@ -84,7 +84,7 @@ const Register = () => {
     };
     setFormSaveData(formNewData);
     setShow(true);
-  }
+  };
 
   const createConfirm = async () => {
     if (!(formSaveData.password === formSaveData.confirmPassword)) {
@@ -97,7 +97,7 @@ const Register = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // token: token,
+          "Access-Control-Allow-Origin": "origin-list",
         },
         body: JSON.stringify({
           username: formSaveData.username,
@@ -131,15 +131,62 @@ const Register = () => {
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form onSubmit={userRegister}>
-          <Input placeholder="Username" name="username" id="username" required />
+          <Input
+            placeholder="Username"
+            name="username"
+            id="username"
+            required
+          />
           {/* <Input placeholder="last name" required /> */}
-          <Input type="text" placeholder="Full Name" name="fullName" id="fullName" required />
-          <Input type="text" placeholder="Email" name="email" id="email" required />
-          <Input type="password" placeholder="Password" name="password" id="password" required />
-          <Input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required />
-          <Input type="date" placeholder="Date of Birth" name="dateOfBirth" id="dateOfBirth" required />
-          <Input type="text" placeholder="Phone Number" name="phoneNo" id="phoneNo" required />
-          <Input type="text" placeholder="Address" name="address" id="address" required />
+          <Input
+            type="text"
+            placeholder="Full Name"
+            name="fullName"
+            id="fullName"
+            required
+          />
+          <Input
+            type="text"
+            placeholder="Email"
+            name="email"
+            id="email"
+            required
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            name="password"
+            id="password"
+            required
+          />
+          <Input
+            type="password"
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            id="confirmPassword"
+            required
+          />
+          <Input
+            type="date"
+            placeholder="Date of Birth"
+            name="dateOfBirth"
+            id="dateOfBirth"
+            required
+          />
+          <Input
+            type="text"
+            placeholder="Phone Number"
+            name="phoneNo"
+            id="phoneNo"
+            required
+          />
+          <Input
+            type="text"
+            placeholder="Address"
+            name="address"
+            id="address"
+            required
+          />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
@@ -155,18 +202,18 @@ const Register = () => {
         onConfirm={() => setAllShow(false)}
       ></SweetAlert>
       <SweetAlert
-          show={show}
-          warning
-          showCancel
-          confirmBtnText="Yes, Create it!"
-          confirmBtnBsStyle="danger"
-          title="Are you sure?"
-          onConfirm={createConfirm}
-          onCancel={createCancel}
-          focusCancelBtn
-        >
-          You will not be able to recover this imaginary file!
-        </SweetAlert>
+        show={show}
+        warning
+        showCancel
+        confirmBtnText="Yes, Create it!"
+        confirmBtnBsStyle="danger"
+        title="Are you sure?"
+        onConfirm={createConfirm}
+        onCancel={createCancel}
+        focusCancelBtn
+      >
+        You will not be able to recover this imaginary file!
+      </SweetAlert>
     </Container>
   );
 };

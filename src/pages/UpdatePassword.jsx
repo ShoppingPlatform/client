@@ -88,12 +88,12 @@ const UpdatePassword = () => {
     if (password === confirmPassword) {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/v1/user/${user._id}`,
+          `https://apiuserbuyer.herokuapp.com/api/v1/user/${user._id}`,
           {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
-              // token: token,
+              "Access-Control-Allow-Origin": "origin-list"
             },
             body: JSON.stringify({
               password: password,

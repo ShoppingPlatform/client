@@ -1,14 +1,13 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../redux/userSlice";
-import { setRandomNumber } from '../redux/randomRedux';
+import { setRandomNumber } from "../redux/randomRedux";
 import SweetAlert from "react-bootstrap-sweetalert";
 // import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router";
-
 
 const Container = styled.div`
   width: 100vw;
@@ -74,6 +73,7 @@ const Link = styled.a`
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const isFetching = useSelector((state) => state.user.currentUser);
+  const token = useSelector((state) => state.user.currentUser.accessToken);
   const [data, setData] = useState([]);
   const [userId, setUserId] = useState([]);
 
@@ -82,25 +82,23 @@ const ForgetPassword = () => {
   const form = useRef();
   const [show, setShow] = useState(false);
   // const [randomNumber, setRandomNumber] = useState(0);
-  const navigation  = useNavigate();
+  const navigation = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
     const checkEmail = async () => {
       try {
-        let response = await fetch(
-          "http://localhost:5000/api/v1/user/email",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              // token: token,
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          }
-        );
+        let response = await fetch("https://apiuserbuyer.herokuapp.com/user/email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "origin-list",
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        });
         let json = await response.json();
         // console.log(json);
         setData(json[0]);
@@ -140,7 +138,7 @@ const ForgetPassword = () => {
           // e.target.reset();
           // window.location.href = "http://localhost:3000/updatePassword";
           dispatch(setRandomNumber(RandomNumber));
-          navigation("/validation",{"RandomNumber":RandomNumber});
+          navigation("/validation", { RandomNumber: RandomNumber });
         },
         (error) => {
           console.log(error.text);

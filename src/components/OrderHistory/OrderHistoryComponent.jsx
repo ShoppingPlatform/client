@@ -17,6 +17,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import { useDispatch, useSelector } from "react-redux";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,15 +33,17 @@ const ExpandMore = styled((props) => {
 export default function OrderHistoryComponent() {
   const [expanded, setExpanded] = React.useState(false);
   const [data, setData] = React.useState(false);
+  const token = useSelector((state) => state.user.currentUser.accessToken);
 
   React.useEffect(() => {
     const cartData = async () => {
       try {
-        let response = await fetch("http://localhost:5000/api/v1/carts", {
+        let response = await fetch("https://apiproductbuy.herokuapp.com/api/v1/carts", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // token: token,
+            token: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "origin-list",
           },
         });
         let json = await response.json();
