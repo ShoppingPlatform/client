@@ -6,6 +6,7 @@ import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
+import { Search } from "@material-ui/icons";
 
 const Container = styled.div``;
 
@@ -38,15 +39,27 @@ const Select = styled.select`
 
 const AllItems = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 `;
 const Option = styled.option``;
+const SearchContainer = styled.div`
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+`;
+const Input = styled.input`
+  border: none;
+  ${mobile({ width: "50px" })}
+`;
 
 const AllProducts = () => {
   //   const cat = window.location.pathname.split("/")[2];
-    const cat = "all";
+  const cat = "all";
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
+  const [query, setQuery] = useState("");
 
   const handleFilters = (e) => {
     const value = e.target.value;
@@ -80,6 +93,14 @@ const AllProducts = () => {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
+        </Filter>
+        <Filter>
+          <SearchContainer>
+            <FilterText>Search Products:</FilterText>
+            <Input placeholder="Search" />
+            {/* <Input placeholder="Search" onChange={(e)=>{setFilters(e.target.value);}} /> */}
+            <Search style={{ color: "gray", fontSize: 16 }} />
+          </SearchContainer>
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
